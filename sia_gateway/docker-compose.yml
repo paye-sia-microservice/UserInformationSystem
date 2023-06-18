@@ -1,0 +1,17 @@
+version: '3.5'
+
+services:
+  lumen:
+    ports:
+      - "8002:8002"
+    volumes:
+      - .:/var/www/html
+      - /var/www/html/vendor/
+    build: .
+    command: php -S lumen:8002 -t public
+    restart: always
+    networks:
+      - asgard
+networks:
+  asgard:
+    external: true
